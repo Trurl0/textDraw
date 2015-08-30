@@ -163,29 +163,20 @@ def drawText(points, phrases, maxLineChars, drawing):
 ####################  
 #      MAIN:       #
 ####################
+if __name__=="__main__":
 
-# Open model
-negative=open("negative rose big.txt")
-#negative=open("negative.txt")
-# Open book 
-book=open("microserfs.txt")
-#book=open("bookInLines.txt")
-# Open drawing
-drawing = open("drawing.txt", "w")
+  negative=open("model.txt")
+  book=open("microserfs.txt")
+  drawing = open("drawing.txt", "w")
 
-# Read model and book
-points = getDrawing(negative)
-phrases = readBook(book)
+  # Read model and book
+  points = getDrawing(negative)
+  phrases = readBook(book)
 
-# To format a book before proceding
-#bookphrases=open("bookInLines.txt","w")
-#for phrase in phrases:
-#	bookphrases.write(phrase+"\n")
-
-# Paint model with book
-while not drawText(points, phrases, 130, drawing):
-  open("drawing.txt", 'w').close()
-  print "STARTING OVER!"
+  # Paint model with book
+  while not drawText(points, phrases, 130, drawing):
+    open("drawing.txt", 'w').close()
+    print "STARTING OVER!"
 
 
 print "END"
