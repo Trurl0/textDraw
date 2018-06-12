@@ -2,12 +2,12 @@
 #coding=utf-8  
 
 
-#import random
-#import sys
-
 def getDrawing(negative):
-# Get position of every non space or line feed in a txt
-# Returns a nested list of every position in which there is an element for each line
+""" 
+Get position of every non space or line in a file
+Returns a nested list of every position, one entry for each line
+"""
+
   points=[]
   for i, line in enumerate(negative.readlines()):
     points.append([])
@@ -16,22 +16,31 @@ def getDrawing(negative):
         points[i].append(j)
   return points
 
+
 def alignDraw(points, maxLineChars):
-  # Put all spaces in a line
+"""
+Put all spaces in a line
+"""
+
   pointLine=[]
   for line, linePoints in enumerate(points):
     for point in linePoints:
       pointLine.append(point+line*maxLineChars)
   return pointLine
 
+
 def readBook(book):
-# Returns all lines in the book in a list of strings with some formatting
+"""
+Returns all lines in the book in a list of strings with some formatting
+"""
+
   lines=""
   # Remove \n
   for line in book.readlines():
     line = line.strip("\n")
     lines +=(str(line)+" ")
-  # Remove double spacings and others
+  # Remove double spacings and other weird characters
+  # This may change depending on the book
   lines = lines.replace("'","")
   lines = lines.replace('"',"")
   lines = lines.replace("***","")
@@ -89,16 +98,20 @@ def readBook(book):
     if (len(lines[i])<1):
       print lines[i]
       lines.pop(i)
-	  
-	 #Why is this not working??
+    
+    #Why is this not working??
     if ('"' in lines[i]):
       print lines[i]
       #lines.pop(i)
 
   return lines
 
+
 def checkLine(pointLine, drawLineAux):
-    # Checks spaces in drawLineAux in positions defined by pointLine
+"""
+Checks spaces in drawLineAux in positions defined by pointLine
+"""
+
     for point in pointLine:
       #print "POINT: "+str(point)
       if len(drawLineAux)==point-1:
@@ -113,10 +126,14 @@ def checkLine(pointLine, drawLineAux):
         # If not breaked till this point Aux is good
         return True
       #print "VALID POINT!"
-	
+
+
 def drawText(points, phrases, maxLineChars, drawing):
-# Draws in drawing the design defined by spaces using the spaces in the phrases in lines, with maxLineChars characters page length
-  drawLine=""
+"""
+ Draws in drawing the design defined by spaces using the spaces in the phrases in lines, with maxLineChars characters page length
+"""
+ 
+ drawLine=""
   drawLineAux=""
   notFinished=True
  
@@ -160,9 +177,8 @@ def drawText(points, phrases, maxLineChars, drawing):
   drawing.close()
   return True
     
-####################  
-#      MAIN:       #
-####################
+
+
 if __name__=="__main__":
 
   negative=open("model.txt")
@@ -177,6 +193,5 @@ if __name__=="__main__":
   while not drawText(points, phrases, 130, drawing):
     open("drawing.txt", 'w').close()
     print "STARTING OVER!"
-
 
 print "END"
