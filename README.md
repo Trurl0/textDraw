@@ -1,5 +1,10 @@
 # textDraw
 Create a drawing using the natural ocurring spaces on a text by picking phrases out of a book.
 
-Using a model and a text picks phrases from the text and writes them in a new file, verifying that non-space characters in the model are left as spaces in the new text, thus creating an instance of the model drawn using the spaces of the new text.
+
+Using an ASCII drawing as a model and a book to take phrases from, this program selects phrases of the apropriate lenght and writes them in a new file, in order to reproduce the drawing of the model with the spaces generated in the text.
 Pretty stuff.
+
+I cannot upload the book input for legal reasons, the drawing input is model.txt and the output is drawing.txt.
+
+I have uploaded some extra images for a better visualization of the result.
