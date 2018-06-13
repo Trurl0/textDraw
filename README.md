@@ -7,6 +7,6 @@ Pretty stuff.
 
 I cannot upload the book input for legal reasons, the drawing input is model.txt and the output is drawing.txt.
 
-I have uploaded some extra images for a better visualization of the result:
+Here is an example of the result:
 
 ![alt text](https://raw.githubusercontent.com/Trurl0/textDraw/master/result.png)
